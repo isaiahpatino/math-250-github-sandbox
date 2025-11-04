@@ -1,0 +1,60 @@
+---
+title: "Inferences Questions"
+author: "Isaiah Patino"
+date: "3 November 2025"
+format: html
+embed-resources: true
+---
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+library(rstatix)
+library(ggpubr)
+carseats <- ISLR2::Carseats
+```
+
+## Problem 1 
+Does this data provide evidence against the company’s claim that the average price of their own seats is $110? Follow all best practices from class, including hypotheses, a relevant visualization, and a conclusion in non-technical language.
+
+The null hypothesis μ = $110 and the alternate hypothesis 
+μ ≠ $110. 
+```{r}
+ggplot(carseats, aes(sample = Price)) +
+  geom_qq() + 
+  geom_qq_line(color = "blue") +
+  labs(title = "Q-Q Plot for Car Seat Prices",
+       x = "Sample Quantities",
+       y = "Theoretical Quantities")
+```
+## Problem 2 
+Compute a level 90% confidence interval for the mean competitor price in the population from which this sample is drawn. What is the sample mean? What is the margin of error?
+```{r}
+get_summary_stats(carseats["Price"], type = "mean_sd")
+
+result <- t.test(carseats$Price, mu = 110, conf.level = 0.90)
+result
+
+error <- 115.795 - 110
+error
+```
+The sample mean is $115.80 and the margin of error is 5.80.
+
+## Problem 3 
+Use these tools to create a table with counts of penguin species and home islands in the penguins set. Include marginal counts in your table.
+```{r}
+penguins <- penguins
+
+peng_table <- table(penguins$species, penguins$island)
+addmargins(peng_table)
+```
+
+## Problem 4 
+Push your solutions to this set to your GitHub page, including both the Quarto source and the rendered html. Use file names of the form, “math250_nov5_yourname.”
+
+Provide a clickable link to the repository on your personal GitHub where these files can be found.
+
+
+
