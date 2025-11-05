@@ -56,5 +56,6 @@ Push your solutions to this set to your GitHub page, including both the Quarto s
 
 Provide a clickable link to the repository on your personal GitHub where these files can be found.
 
+[Repo Link](https://github.com/isaiahpatino/math-250-github-sandbox/blob/main/math250_nov5_isaiahpatino.qmd)
 
 
